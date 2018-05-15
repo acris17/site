@@ -34,8 +34,7 @@ impl Application {
     fn run(&self) {
         if self.edit {
             browser::edit_config();
-        } 
-        else {
+        } else {
             let mut bookmarks = browser::Bookmarks::default();
             bookmarks.setup();
             bookmarks.open_site(&self.key);
