@@ -1,0 +1,11 @@
+[package]
+name = "site"
+version = "0.1.0"
+authors = ["Andrew Cristancho <acristancho0117@gmail.com>"]
+description = "Command line bookmark manager"
+
+[dependencies]
+clap = "~2.31.2"
+serde = "1.0.55"
+serde_derive = "1.0.51"
+toml = "0.4.6"
