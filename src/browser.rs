@@ -52,20 +52,21 @@ fn open_url(url: &str) {
     shell(&process);
 }
 fn shell(process: &str) {
-    let process_vector: Vec<_> = process
-        .split_whitespace()
-        .collect();
+    let mut process = process.split_whitespace();
     
-    if let Some(command) = process_vector.get(0) {
-        let arguments = process_vector.get(1..).unwrap();
+    if let Some(command) = process.nth(0) {
+        let arguments: Vec<_> = process.collect();
         let child = std::process::Command::new(command)
             .args(arguments)
             .spawn();
 
         if let Err(error) = child {
             println!("{}: {}", command, error);
-        } else {
-            child.unwrap().wait().expect("failed to wait on child");
+        } 
+        else if let Ok(mut child) = child {
+            if let Err(error) = child.wait() {
+                println!("{}: {}", command, error);
+            }
         }
     }
 }
