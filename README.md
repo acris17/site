@@ -7,8 +7,8 @@ A command line bookmark manager
 The purpose of the app is to access website bookmarks from the command line. I felt it took to much time to fire up safari, open up the bookmarks page, search for the bookmark I'm looking for, then use the bookmark. I just wanted all my bookmarks to be in a simple configuration file that my app can access.
 
 ## Environment
-* **MacOS** - version 10.13.4
-* **Rust** - version 1.26.0
+* **MacOS** - version 10.13.6
+* **Rust** - version 1.27.2
 
 ## Installation
 1. Make sure you have the latest rust tools installed

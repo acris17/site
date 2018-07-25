@@ -1,6 +1,6 @@
 [package]
 name = "site"
-version = "0.2.0"
+version = "0.3.0"
 authors = ["Andrew Cristancho <acristancho0117@gmail.com>"]
 description = "Command line bookmark manager"
 

@@ -1,5 +1,5 @@
 use ::args;
-use ::browser;
+use ::bookmarks;
 
 
 pub fn start() {
@@ -9,9 +9,9 @@ pub fn start() {
 }
 
 
-#[derive(Debug, Default)]
+#[derive(Default)]
 struct Application {
-    key: String,
+    key:  String,
     edit: bool,
 }
 impl Application {
@@ -32,12 +32,13 @@ impl Application {
         }
     }
     fn run(&self) {
+        let mut bookmarks = bookmarks::Bookmarks::default();
+        bookmarks.setup();
+            
         if self.edit {
-            browser::edit_config();
+            bookmarks.edit();
         } else {
-            let mut bookmarks = browser::Bookmarks::default();
-            bookmarks.setup();
-            bookmarks.open_site(&self.key);
+            bookmarks.open(&self.key);
         }
     }
 }

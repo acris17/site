@@ -8,5 +8,5 @@ extern crate toml;
 
 pub mod app;
 pub mod args;
-pub mod browser;
+pub mod bookmarks;
 pub mod support;

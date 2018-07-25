@@ -3,7 +3,7 @@ use ::support;
 use ::toml;
 
 
-#[derive(Debug, Default, Deserialize)]
+#[derive(Default, Deserialize)]
 pub struct Bookmarks {
     sites: std::collections::HashMap<String, String>
 }
@@ -16,8 +16,8 @@ impl Bookmarks {
         let config  = support::setup_config();
 
         if support.is_ok() && config.is_ok() {
-            if let Some(config) = support::config_path() {
-                self.configure(&config);
+            if let Some(config_path) = support::get_config_path() {
+                self.configure(&config_path);
             }
         }
     }
@@ -28,19 +28,17 @@ impl Bookmarks {
             }
         }
     }
-    pub fn open_site(&self, key: &str) {
+    pub fn open(&self, key: &str) {
         if let Some(url) = self.sites.get(key) {
             open_url(url);
         }
     }
-}
-
-
-pub fn edit_config() {
-    if let Some(config) = support::config_path() {
-        if let Ok(editor) = std::env::var("EDITOR") {
-            let process = format!("{} {}", editor, config);
-            shell(&process);
+    pub fn edit(&self) {
+        if let Some(config_path) = support::get_config_path() {
+            if let Ok(editor) = std::env::var("EDITOR") {
+                let process = format!("{} {}", editor, config_path);
+                shell(&process);
+            }
         }
     }
 }
